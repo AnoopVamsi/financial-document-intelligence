@@ -1,0 +1,13 @@
+streamlit
+fastapi
+uvicorn
+langchain
+langgraph
+chromadb
+sentence-transformers
+pymupdf
+rank-bm25
+ragas
+ollama
+pydantic
+python-dotenv

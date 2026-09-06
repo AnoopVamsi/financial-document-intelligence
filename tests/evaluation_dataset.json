@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What are the major risk factors in this annual report?",
+    "expected_topic": "business, market, supply chain, competition, and financial risks"
+  },
+  {
+    "question": "What does the report say about competition?",
+    "expected_topic": "competitive market conditions and competitors"
+  },
+  {
+    "question": "What supply chain risks are mentioned?",
+    "expected_topic": "component availability, manufacturing, suppliers, and disruption risks"
+  }
+]

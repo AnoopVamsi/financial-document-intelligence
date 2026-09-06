@@ -1,0 +1,98 @@
+[
+  {
+    "question": "What are the major risk factors in this annual report?",
+    "expected_topic": "business, market, supply chain, competition, and financial risks",
+    "answer": "According to the document, the major risk factors for Apple Inc. include:\n\n1. Economic risk from interest rates and foreign exchange rates.\n2. Interest Rate Risk, specifically fluctuations in U.S. interest rates that may impact the Company's investment portfolio and term debt.\n3. Reputational harm, increased costs, and potential liabilities related to environmental, social, and governance considerations, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion.",
+    "sources": [
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 8,
+        "rerank_score": 0.6754
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 8,
+        "rerank_score": 0.3488
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 30,
+        "rerank_score": 0.338
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 4,
+        "rerank_score": 0.3334
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 17,
+        "rerank_score": 0.3296
+      }
+    ]
+  },
+  {
+    "question": "What does the report say about competition?",
+    "expected_topic": "competitive market conditions and competitors",
+    "answer": "The report mentions that competition for talent is intense, especially in Silicon Valley, where most of Apple's key personnel are located.",
+    "sources": [
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 117,
+        "rerank_score": 0.6198
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 116,
+        "rerank_score": 0.6188
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 14,
+        "rerank_score": 0.35
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 116,
+        "rerank_score": 0.3472
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 117,
+        "rerank_score": 0.3472
+      }
+    ]
+  },
+  {
+    "question": "What supply chain risks are mentioned?",
+    "expected_topic": "component availability, manufacturing, suppliers, and disruption risks",
+    "answer": "The supply chain risks mentioned in the document are:\n\n1. Continued disruptions or termination of supply\n2. Exposure to additional regulatory and operational risks\n3. Industrial accidents at suppliers and contract manufacturers\n4. Risks of cyber attacks and ransomware\n5. Labor disputes\n6. Public health issues and other events beyond the Company's control\n7. Geopolitical tensions or conflict leading to significant disruptions\n8. Concentration of global supply chains, making it difficult to manufacture and deliver products to customers\n9. Industry-wide shortages and significant commodity pricing fluctuations\n10. Disruptions in the global semiconductor industry\n\nThese risks can negatively impact the Company's business, results of operations, and financial condition.",
+    "sources": [
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 11,
+        "rerank_score": 0.7334
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 9,
+        "rerank_score": 0.7117
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 9,
+        "rerank_score": 0.4135
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 11,
+        "rerank_score": 0.4023
+      },
+      {
+        "document_name": "apple_2024_10k.pdf",
+        "page_number": 11,
+        "rerank_score": 0.3912
+      }
+    ]
+  }
+]

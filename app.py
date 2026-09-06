@@ -1,7 +1,7 @@
 import streamlit as st
 
-from src.rag import generate_grounded_answer
-from src.retrieval import retrieve_relevant_chunks
+from src.monitoring import log_query_metrics, start_timer
+from src.workflow import run_rag_workflow
 
 st.set_page_config(
     page_title="Financial Document Intelligence",
@@ -17,9 +17,13 @@ with st.sidebar:
     st.write("✓ PDF ingestion and chunking")
     st.write("✓ Local embeddings")
     st.write("✓ ChromaDB semantic search")
+    st.write("✓ BM25 keyword search")
+    st.write("✓ Hybrid retrieval and reranking")
+    st.write("✓ Guardrails")
+    st.write("✓ LangGraph workflow")
     st.write("✓ Local Ollama answer generation")
     st.write("✓ Source citations")
-    st.write("○ Hybrid search and guardrails — next")
+    st.write("✓ Local monitoring")
 
 st.subheader("Ask a question about the indexed financial documents")
 
@@ -32,15 +36,23 @@ if question:
         st.write(question)
 
     with st.chat_message("assistant"):
-        with st.spinner("Retrieving sources and generating a grounded answer..."):
-            results = retrieve_relevant_chunks(question)
+        request_start = start_timer()
 
-            if results:
-                answer = generate_grounded_answer(question, results)
-            else:
-                answer = "I could not find relevant information in the indexed documents."
+        with st.spinner("Running the LangGraph financial RAG workflow..."):
+            workflow_result = run_rag_workflow(question)
 
-        st.markdown(answer)
+        elapsed_seconds = start_timer() - request_start
+
+        log_query_metrics(
+            question=question,
+            elapsed_seconds=elapsed_seconds,
+            source_count=len(workflow_result["retrieved_chunks"]),
+            blocked=workflow_result["blocked"],
+        )
+
+        st.markdown(workflow_result["answer"])
+
+        results = workflow_result["retrieved_chunks"]
 
         if results:
             st.subheader("Sources used")
@@ -53,7 +65,7 @@ if question:
                     st.write(result["text"])
                     st.caption(
                         f"Chunk {result['chunk_number']} | "
-                        f"Semantic distance: {result['distance']}"
+                        f"Rerank score: {result.get('rerank_score', 'N/A')}"
                     )
 
 st.divider()
@@ -67,7 +79,7 @@ with col2:
     st.metric("Vector Chunks", "975")
 
 with col3:
-    st.metric("RAG Mode", "Local Ollama + ChromaDB")
+    st.metric("Workflow", "LangGraph RAG")
 
 st.caption(
     "This project uses public financial documents only. "

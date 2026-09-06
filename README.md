@@ -1,24 +1,42 @@
 # Financial Document Intelligence Platform
 
-A public technical demonstration of an enterprise-style financial document search and RAG platform.
+A local, enterprise-style Financial RAG application that helps internal users search public financial documents and receive grounded, source-cited answers.
+
+> This is a public technical demonstration that uses public documents only. It does not contain confidential employer, banking, or customer data.
 
 ## Business Problem
 
-Financial-services teams often need to search large volumes of annual reports, SEC filings, policies, risk reports, and research documents. Manual review is slow, while keyword-only search can return irrelevant results.
+Financial-services teams search large volumes of annual reports, SEC filings, research reports, and risk documents. Manual review is slow, while keyword-only search may return irrelevant information.
 
-## Solution
+This project demonstrates how Retrieval-Augmented Generation (RAG) can retrieve relevant financial-document evidence and generate a source-backed answer.
 
-This platform will help internal users ask questions in natural language and receive grounded answers with source citations from approved public financial documents.
+## Features
 
-## Planned Workflow
+- PDF text extraction with page-level metadata
+- Text chunking with overlap
+- Local embeddings using Sentence Transformers
+- ChromaDB vector storage
+- Semantic vector search
+- BM25 keyword search
+- Hybrid retrieval and reranking
+- Guardrails for basic prompt-injection attempts
+- LangGraph workflow orchestration
+- Local answer generation using Ollama and Llama 3.2
+- Source citations with document name and page number
+- Repeatable evaluation dataset
+- Local query latency and source-count monitoring
+
+## Architecture
 
 ```text
-Financial documents
-→ Text extraction and OCR
-→ Metadata enrichment
+Public Financial PDF
+→ Text Extraction
 → Chunking
 → Embeddings
-→ Vector database
-→ Hybrid search and reranking
+→ ChromaDB Vector Store
+→ Semantic Search + BM25 Keyword Search
+→ Hybrid Retrieval + Reranking
 → Guardrails
-→ Source-cited RAG answers
+→ LangGraph Workflow
+→ Ollama Local LLM
+→ Source-Cited Answer

@@ -6,3 +6,4 @@ data/processed/
 chroma_db/
 .streamlit/secrets.toml
 .DS_Store
+logs/

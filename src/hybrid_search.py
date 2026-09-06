@@ -1,4 +1,5 @@
 from src.keyword_search import keyword_search
+from src.reranker import rerank_results
 from src.retrieval import retrieve_relevant_chunks
 
 
@@ -52,7 +53,9 @@ def hybrid_search(question: str, top_k: int = 5) -> list[dict]:
         reverse=True,
     )
 
-    return ranked_results[:top_k]
+    reranked_results = rerank_results(ranked_results)
+
+    return reranked_results[:top_k]
 
 
 if __name__ == "__main__":
@@ -66,6 +69,5 @@ if __name__ == "__main__":
         print(
             f"{index}. {result['document_name']} | "
             f"Page {result['page_number']} | "
-            f"Semantic: {result['semantic_match']} | "
-            f"Keyword: {result['keyword_match']}"
+            f"Rerank score: {result['rerank_score']}"
         )

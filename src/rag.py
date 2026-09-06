@@ -1,5 +1,7 @@
 import ollama
 
+from src.guardrails import has_sufficient_evidence, validate_question
+
 MODEL_NAME = "llama3.2:3b"
 
 
@@ -20,10 +22,15 @@ def build_context(retrieved_chunks: list[dict]) -> str:
 
 
 def generate_grounded_answer(question: str, retrieved_chunks: list[dict]) -> str:
-    """Answer only from retrieved financial-document evidence."""
+    """Answer only from retrieved evidence after guardrail checks."""
 
-    if not retrieved_chunks:
-        return "I could not find relevant information in the indexed documents."
+    is_allowed, message = validate_question(question)
+
+    if not is_allowed:
+        return message
+
+    if not has_sufficient_evidence(retrieved_chunks):
+        return "I could not find enough evidence in the indexed documents."
 
     context = build_context(retrieved_chunks)
 
